@@ -206,20 +206,14 @@
   }
   .user-input {
     position: relative;
-  }
-  .err-bill .user-input-bill::before {
-    content: "can't be zero";
-    position: absolute;
-    right: 0;
-    top: 20%;
-    color: red;
-  }
-  
-  .err-people .user-input-people::before {
-    content: "can't be zero";
-    position: absolute;
-    right: 0;
-    top: 20%;
-    color: red;
+
+    &.err-bill::before,
+    &.err-people::before {
+      content: "can't be zero";
+      position: absolute;
+      right: 0;
+      top: 20%;
+      color: red;
+    }
   }
   

@@ -2,6 +2,7 @@ import React from "react";
 import "./home.scss"
 import logoImg from "./images/logo.svg"
 import dolarIcon from "./images/icon-dollar.svg"
+import personIcon from "./images/icon-person.svg"
 
 const home = () => {
   return (
@@ -43,7 +44,7 @@ const home = () => {
                 <label>Number of People</label>
                 <img
                   class="icon-person"
-                  src="./images/icon-person.svg"
+                  src={personIcon}
                   alt="person icon"
                 />
                 <input class="input people-input" placeholder="0" type="text" />
