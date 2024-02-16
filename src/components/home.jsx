@@ -1,12 +1,14 @@
 import React from "react";
 import "./home.scss"
+import logoImg from "./images/logo.svg"
+import dolarIcon from "./images/icon-dollar.svg"
 
 const home = () => {
   return (
     <div>
       <main class="main">
         <header class="img">
-          <img src="./images/logo.svg" alt="" />
+          <img src={logoImg} alt="" />
         </header>
         <div class="app">
           <div class="bill">
@@ -15,7 +17,7 @@ const home = () => {
                 <label>Bill</label>
                 <img
                   class="icon-dollar"
-                  src="./images/icon-dollar.svg"
+                  src={dolarIcon}
                   alt="dolar icon"
                 />
                 <input class="input bill-input" placeholder="0" type="tex" />
