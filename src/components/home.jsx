@@ -11,9 +11,13 @@ const Home = () => {
 
   const handleBillInputChange = (e) => {
     setBillAmount(e.target.value);
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
 
+  const handlePeopleInputChange = (e) => {
+    setNumOfPeople(e.target.value);
+    console.log(e.target.value);
+  }
   return (
     <div>
       <main className="main">
@@ -52,8 +56,17 @@ const Home = () => {
               </div>
               <div className="person-input user-input-people">
                 <label>Number of People</label>
-                <img className="icon-person" src={personIcon} alt="person icon" />
-                <input className="input people-input" placeholder="0" type="text" />
+                <img
+                  className="icon-person"
+                  src={personIcon}
+                  alt="person icon"
+                />
+                <input
+                  className="input people-input"
+                  placeholder="0"
+                  onChange={handlePeopleInputChange}
+                  value={numOfPeople}
+                />
               </div>
             </div>
           </div>
