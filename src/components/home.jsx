@@ -1,76 +1,82 @@
-import React from "react";
-import "./home.scss"
-import logoImg from "./images/logo.svg"
-import dolarIcon from "./images/icon-dollar.svg"
-import personIcon from "./images/icon-person.svg"
+import React, { useState } from "react";
+import "./home.scss";
+import logoImg from "./images/logo.svg";
+import dolarIcon from "./images/icon-dollar.svg";
+import personIcon from "./images/icon-person.svg";
 
-const home = () => {
+const Home = () => {
+  const [billAmount, setBillAmount] = useState(0);
+  const [tipPercent, setTipPercent] = useState(0);
+  const [numOfPeople, setNumOfPeople] = useState(0);
+
+  const handleBillInputChange = (e) => {
+    setBillAmount(e.target.value);
+    console.log(e.target.value)
+  };
+
   return (
     <div>
-      <main class="main">
-        <header class="img">
+      <main className="main">
+        <header className="img">
           <img src={logoImg} alt="" />
         </header>
-        <div class="app">
-          <div class="bill">
-            <div class="money-input">
-              <div class="input-bill user-input-bill">
+        <div className="app">
+          <div className="bill">
+            <div className="money-input">
+              <div className="input-bill user-input-bill">
                 <label>Bill</label>
-                <img
-                  class="icon-dollar"
-                  src={dolarIcon}
-                  alt="dolar icon"
+                <img className="icon-dollar" src={dolarIcon} alt="dolar icon" />
+                <input
+                  className="input bill-input"
+                  placeholder="0"
+                  value={billAmount}
+                  onChange={handleBillInputChange}
                 />
-                <input class="input bill-input" placeholder="0" type="tex" />
               </div>
-              <div class="tip-wrapper">
+              <div className="tip-wrapper">
                 <label>Select Tip %</label>
-                <div class="percents">
-                  <button class="percent-btn">5%</button>
-                  <button class="percent-btn">10%</button>
-                  <button class="percent-btn">15%</button>
-                  <button class="percent-btn">25%</button>
-                  <button class="percent-btn">50%</button>
-                  <div class="custom">
+                <div className="percents">
+                  <button className="percent-btn">5%</button>
+                  <button className="percent-btn">10%</button>
+                  <button className="percent-btn">15%</button>
+                  <button className="percent-btn">25%</button>
+                  <button className="percent-btn">50%</button>
+                  <div className="custom">
                     <input
-                      class="custom custom-input"
+                      className="custom custom-input"
                       type="text"
                       placeholder="Custom"
                     />
                   </div>
                 </div>
               </div>
-              <div class="person-input user-input-people">
+              <div className="person-input user-input-people">
                 <label>Number of People</label>
-                <img
-                  class="icon-person"
-                  src={personIcon}
-                  alt="person icon"
-                />
-                <input class="input people-input" placeholder="0" type="text" />
+                <img className="icon-person" src={personIcon} alt="person icon" />
+                <input className="input people-input" placeholder="0" type="text" />
               </div>
             </div>
           </div>
-          <div class="amounts">
-            <div class="tip-amount">
-              <div class="tip-title">
+          <div className="amounts">
+            <div className="tip-amount">
+              <div className="tip-title">
                 <p>Tip Amount</p>
                 <span>/ person</span>
               </div>
-              <div class="money">
-                $<span class="money tip-money">0.00</span>
+              <div className="money">
+                $<span className="money tip-money">0.00</span>
               </div>
             </div>
-            <div class="total-amount">
-              <div class="total-title">
+            <div className="total-amount">
+              <div className="total-title">
                 <p>Total</p>
                 <span>/ person</span>
               </div>
-              <div class="money">
-                $<span class="money total-money">0.00</span>
+              <div className="money">
+                $<span className="money total-money">0.00</span>
               </div>
             </div>
-            <button class="reset-btn">RESET</button>
+            <button className="reset-btn">RESET</button>
           </div>
         </div>
       </main>
@@ -78,4 +84,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
