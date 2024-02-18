@@ -176,12 +176,14 @@ label {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-.percent-btn:active {
-  background: #9fe8df;
-}
-.percent-btn p:active {
-  color: #00474b;
+
+  &:active {
+    background: #9fe8df;
+
+    p:active {
+      color: #00474b;
+    }
+  }
 }
 
 .custom {
