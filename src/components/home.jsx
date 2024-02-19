@@ -5,9 +5,21 @@ import dolarIcon from "./images/icon-dollar.svg";
 import personIcon from "./images/icon-person.svg";
 
 const Home = () => {
-  const [billAmount, setBillAmount] = useState(0);
-  const [tipPercent, setTipPercent] = useState(0);
-  const [numOfPeople, setNumOfPeople] = useState(0);
+  const [billAmount, setBillAmount] = useState();
+  const [tipPercent, setTipPercent] = useState();
+  const [numOfPeople, setNumOfPeople] = useState();
+  const [tipAmount, setTipAmount] = useState("0.00")
+  const [totalAmount, setTotalAmount] = useState("0.00")
+
+  const calculateTipAmount = () => {
+    const tipAmount = (billAmount * tipPercent) / 100;
+    return tipAmount * numOfPeople || 0;
+  };
+
+  const calculateTotalAmount = () => {
+    const totalAmount = (billAmount + calculateTipAmount()) / numOfPeople || 0;
+    return totalAmount.toFixed(2);
+  };
 
   const handleBillInputChange = (e) => {
     setBillAmount(e.target.value);
@@ -21,13 +33,22 @@ const Home = () => {
 
   const handleTipButtonClick = (percent) => {
     setTipPercent(percent);
-    console.log(percent)
+    setTipAmount(calculateTipAmount)
+    console.log(percent);
   };
 
   const handleCustomInputChange = (e) => {
-    setTipPercent(e.target.value)
-    console.log(e.target.value)
-  }
+    setTipPercent(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleResetClick = () => {
+    setBillAmount(0);
+    setTipPercent(0);
+    setNumOfPeople(0);
+    setTipAmount("0.00")
+  };
+
   return (
     <div>
       <main className="main">
@@ -92,7 +113,7 @@ const Home = () => {
                 <span>/ person</span>
               </div>
               <div className="money">
-                $<span className="money tip-money">0.00</span>
+                $<span className="money tip-money">{tipAmount}</span>
               </div>
             </div>
             <div className="total-amount">
@@ -101,10 +122,15 @@ const Home = () => {
                 <span>/ person</span>
               </div>
               <div className="money">
-                $<span className="money total-money">0.00</span>
+                $
+                <span className="money total-money">
+                  {totalAmount}
+                </span>
               </div>
             </div>
-            <button className="reset-btn">RESET</button>
+            <button className="reset-btn" onClick={handleResetClick}>
+              RESET
+            </button>
           </div>
         </div>
       </main>
