@@ -23,6 +23,11 @@ const Home = () => {
     setTipPercent(percent);
     console.log(percent)
   };
+
+  const handleCustomInputChange = (e) => {
+    setTipPercent(e.target.value)
+    console.log(e.target.value)
+  }
   return (
     <div>
       <main className="main">
@@ -57,8 +62,9 @@ const Home = () => {
                   <div className="custom">
                     <input
                       className="custom custom-input"
-                      type="text"
                       placeholder="Custom"
+                      value={tipPercent}
+                      onChange={handleCustomInputChange}
                     />
                   </div>
                 </div>
