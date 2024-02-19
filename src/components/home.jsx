@@ -17,7 +17,12 @@ const Home = () => {
   const handlePeopleInputChange = (e) => {
     setNumOfPeople(e.target.value);
     console.log(e.target.value);
-  }
+  };
+
+  const handleTipButtonClick = (percent) => {
+    setTipPercent(percent);
+    console.log(percent)
+  };
   return (
     <div>
       <main className="main">
@@ -40,11 +45,15 @@ const Home = () => {
               <div className="tip-wrapper">
                 <label>Select Tip %</label>
                 <div className="percents">
-                  <button className="percent-btn">5%</button>
-                  <button className="percent-btn">10%</button>
-                  <button className="percent-btn">15%</button>
-                  <button className="percent-btn">25%</button>
-                  <button className="percent-btn">50%</button>
+                  {[5, 10, 15, 25, 50].map((percent) => (
+                    <button
+                      key={percent}
+                      className="percent-btn"
+                      onClick={() => handleTipButtonClick(percent)}
+                    >
+                      {percent}%
+                    </button>
+                  ))}
                   <div className="custom">
                     <input
                       className="custom custom-input"
