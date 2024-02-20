@@ -8,8 +8,8 @@ const Home = () => {
   const [billAmount, setBillAmount] = useState();
   const [tipPercent, setTipPercent] = useState();
   const [numOfPeople, setNumOfPeople] = useState();
-  const [tipAmount, setTipAmount] = useState("0.00")
-  const [totalAmount, setTotalAmount] = useState("0.00")
+  const [tipAmount, setTipAmount] = useState("0.00");
+  const [totalAmount, setTotalAmount] = useState("0.00");
 
   const calculateTipAmount = () => {
     const tipAmount = (billAmount * tipPercent) / 100;
@@ -33,7 +33,7 @@ const Home = () => {
 
   const handleTipButtonClick = (percent) => {
     setTipPercent(percent);
-    setTipAmount(calculateTipAmount)
+    setTipAmount(calculateTipAmount);
     console.log(percent);
   };
 
@@ -41,13 +41,12 @@ const Home = () => {
     setTipPercent(e.target.value);
     console.log(e.target.value);
   };
-  
 
   const handleResetClick = () => {
     setBillAmount(0);
     setTipPercent(0);
     setNumOfPeople(0);
-    setTipAmount("0.00")
+    setTipAmount("0.00");
   };
 
   return (
@@ -123,10 +122,7 @@ const Home = () => {
                 <span>/ person</span>
               </div>
               <div className="money">
-                $
-                <span className="money total-money">
-                  {totalAmount}
-                </span>
+                $<span className="money total-money">{totalAmount}</span>
               </div>
             </div>
             <button className="reset-btn" onClick={handleResetClick}>
