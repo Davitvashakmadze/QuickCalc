@@ -41,6 +41,7 @@ const Home = () => {
     setTipPercent(e.target.value);
     console.log(e.target.value);
   };
+  
 
   const handleResetClick = () => {
     setBillAmount(0);
