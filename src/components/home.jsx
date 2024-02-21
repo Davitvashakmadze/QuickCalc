@@ -5,20 +5,20 @@ import dolarIcon from "./images/icon-dollar.svg";
 import personIcon from "./images/icon-person.svg";
 
 const Home = () => {
-  const [billAmount, setBillAmount] = useState();
-  const [tipPercent, setTipPercent] = useState();
-  const [numOfPeople, setNumOfPeople] = useState();
+  const [billAmount, setBillAmount] = useState(null);
+  const [tipPercent, setTipPercent] = useState(null);
+  const [numOfPeople, setNumOfPeople] = useState(null);
   const [tipAmount, setTipAmount] = useState("0.00");
   const [totalAmount, setTotalAmount] = useState("0.00");
 
   const calculateTipAmount = () => {
     const tipAmount = (billAmount * tipPercent) / 100;
-    return tipAmount * numOfPeople || 0;
+    return tipAmount;
   };
 
   const calculateTotalAmount = () => {
-    const totalAmount = (billAmount + calculateTipAmount()) / numOfPeople || 0;
-    return totalAmount.toFixed(2);
+    const tipTotalAmount = billAmount / numOfPeople + tipAmount;
+    return tipTotalAmount;
   };
 
   const handleBillInputChange = (e) => {
@@ -34,6 +34,7 @@ const Home = () => {
   const handleTipButtonClick = (percent) => {
     setTipPercent(percent);
     setTipAmount(calculateTipAmount);
+    setTotalAmount(calculateTotalAmount);
     console.log(percent);
   };
 
@@ -43,10 +44,11 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
-    setBillAmount(0);
-    setTipPercent(0);
-    setNumOfPeople(0);
+    setBillAmount("");
+    setTipPercent("");
+    setNumOfPeople("");
     setTipAmount("0.00");
+    setTotalAmount("0.00");
   };
 
   return (
