@@ -10,6 +10,7 @@ const Home = () => {
   const [numOfPeople, setNumOfPeople] = useState("");
   const [tipAmount, setTipAmount] = useState("0.00");
   const [totalAmount, setTotalAmount] = useState("0.00");
+  const [customTipPercent, setCustomTipPercent] = useState("");
 
   const calculateTipAmount = () => {
     const bill = parseFloat(billAmount);
@@ -17,9 +18,8 @@ const Home = () => {
     const tipAmount = (bill * percent) / 100;
     return tipAmount.toFixed(2);
   };
-  
 
- const calculateTotalAmount = () => {
+  const calculateTotalAmount = () => {
     const totalAmount =
       parseFloat(billAmount) / parseFloat(numOfPeople) + parseFloat(tipAmount);
     return totalAmount.toFixed(2);
@@ -39,11 +39,12 @@ const Home = () => {
     setTipPercent(percent);
     setTipAmount(calculateTipAmount());
     setTotalAmount(calculateTotalAmount());
-    // console.log(calculateTipAmount);
+    console.log(percent);
   };
 
   const handleCustomInputChange = (e) => {
-    setTipPercent(e.target.value);
+    const customPercent = e.target.value
+    setCustomTipPercent(Number(customPercent));
     setTipAmount(calculateTipAmount());
     setTotalAmount(calculateTotalAmount());
     console.log(e.target.value);
@@ -55,6 +56,7 @@ const Home = () => {
     setNumOfPeople("");
     setTipAmount("0.00");
     setTotalAmount("0.00");
+    setCustomTipPercent("")
   };
 
   return (
@@ -92,7 +94,7 @@ const Home = () => {
                     <input
                       className="custom custom-input"
                       placeholder="Custom"
-                      value={tipPercent}
+                      value={customTipPercent}
                       onChange={handleCustomInputChange}
                     />
                   </div>
