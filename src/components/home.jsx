@@ -13,15 +13,15 @@ const Home = () => {
   const [customTipPercent, setCustomTipPercent] = useState("");
 
   const calculateTipAmount = () => {
-    const bill = parseFloat(billAmount);
-    const percent = parseFloat(tipPercent);
+    const bill = Number(billAmount);
+    const percent = Number(tipPercent);
     const tipAmount = (bill * percent) / 100;
     return tipAmount.toFixed(2);
   };
 
   const calculateTotalAmount = () => {
     const totalAmount =
-      parseFloat(billAmount) / parseFloat(numOfPeople) + parseFloat(tipAmount);
+      Number(billAmount) / Number(numOfPeople) + Number(tipAmount);
     return totalAmount.toFixed(2);
   };
 
@@ -43,11 +43,11 @@ const Home = () => {
   };
 
   const handleCustomInputChange = (e) => {
-    const customPercent = e.target.value
-    setCustomTipPercent(Number(customPercent));
+    const customPercent = Number(e.target.value);
+    setCustomTipPercent(customPercent);
     setTipAmount(calculateTipAmount());
     setTotalAmount(calculateTotalAmount());
-    console.log(e.target.value);
+    console.log(customPercent);
   };
 
   const handleResetClick = () => {
@@ -56,7 +56,7 @@ const Home = () => {
     setNumOfPeople("");
     setTipAmount("0.00");
     setTotalAmount("0.00");
-    setCustomTipPercent("")
+    setCustomTipPercent("");
   };
 
   return (
