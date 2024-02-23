@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./home.scss";
 import logoImg from "./images/logo.svg";
 import dolarIcon from "./images/icon-dollar.svg";
@@ -12,18 +12,7 @@ const Home = () => {
   const [totalAmount, setTotalAmount] = useState("0.00");
   const [customTipPercent, setCustomTipPercent] = useState("");
 
-  const calculateTipAmount = () => {
-    const bill = Number(billAmount);
-    const percent = Number(tipPercent);
-    const tipAmount = (bill * percent) / 100;
-    return tipAmount.toFixed(2);
-  };
-
-  const calculateTotalAmount = () => {
-    const totalAmount =
-      Number(billAmount) / Number(numOfPeople) + Number(tipAmount);
-    return totalAmount.toFixed(2);
-  };
+ 
 
   const handleBillInputChange = (e) => {
     setBillAmount(e.target.value);
@@ -35,18 +24,33 @@ const Home = () => {
     console.log(e.target.value);
   };
 
+  useEffect (() => {
+    const calculateTipAmount = () => {
+    const bill = Number (billAmount);
+    const percent = Number(tipPercent);
+    const tipAmount = (bill * percent) / 100;
+    console.log(tipAmount);
+    setTipAmount (tipAmount.toFixed (2));
+    }
+    const calculateTotalAmount = () => {
+    const totalAmount =
+    Number (billAmount) / Number (numOfPeople) + Number(tipAmount);
+    if (isNaN(totalAmount)) return;
+    if (!isFinite (totalAmount)) return;
+    setTotalAmount (totalAmount.toFixed (2));
+    }
+    calculateTipAmount ();
+    calculateTotalAmount ();
+    }, [billAmount, numOfPeople, tipAmount, tipPercent]);
+
   const handleTipButtonClick = (percent) => {
     setTipPercent(percent);
-    setTipAmount(calculateTipAmount());
-    setTotalAmount(calculateTotalAmount());
     console.log(percent);
   };
 
   const handleCustomInputChange = (e) => {
     const customPercent = Number(e.target.value);
     setCustomTipPercent(customPercent);
-    setTipAmount(calculateTipAmount());
-    setTotalAmount(calculateTotalAmount());
     console.log(customPercent);
   };
 
