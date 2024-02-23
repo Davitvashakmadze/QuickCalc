@@ -12,8 +12,6 @@ const Home = () => {
   const [totalAmount, setTotalAmount] = useState("0.00");
   const [customTipPercent, setCustomTipPercent] = useState("");
 
- 
-
   const handleBillInputChange = (e) => {
     setBillAmount(e.target.value);
     console.log(e.target.value);
@@ -24,24 +22,24 @@ const Home = () => {
     console.log(e.target.value);
   };
 
-  useEffect (() => {
+  useEffect(() => {
     const calculateTipAmount = () => {
-    const bill = Number (billAmount);
-    const percent = Number(tipPercent);
-    const tipAmount = (bill * percent) / 100;
-    console.log(tipAmount);
-    setTipAmount (tipAmount.toFixed (2));
-    }
+      const bill = Number(billAmount);
+      const percent = Number(tipPercent);
+      const tipAmount = (bill * percent) / 100;
+      console.log(tipAmount);
+      setTipAmount(tipAmount.toFixed(2));
+    };
     const calculateTotalAmount = () => {
-    const totalAmount =
-    Number (billAmount) / Number (numOfPeople) + Number(tipAmount);
-    if (isNaN(totalAmount)) return;
-    if (!isFinite (totalAmount)) return;
-    setTotalAmount (totalAmount.toFixed (2));
-    }
-    calculateTipAmount ();
-    calculateTotalAmount ();
-    }, [billAmount, numOfPeople, tipAmount, tipPercent]);
+      const totalAmount =
+        Number(billAmount) / Number(numOfPeople) + Number(tipAmount);
+      if (isNaN(totalAmount)) return;
+      if (!isFinite(totalAmount)) return;
+      setTotalAmount(totalAmount.toFixed(2));
+    };
+    calculateTipAmount();
+    calculateTotalAmount();
+  }, [billAmount, numOfPeople, tipAmount, tipPercent]);
 
   const handleTipButtonClick = (percent) => {
     setTipPercent(percent);
