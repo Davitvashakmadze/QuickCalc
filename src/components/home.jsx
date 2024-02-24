@@ -11,6 +11,7 @@ const Home = () => {
   const [tipAmount, setTipAmount] = useState("0.00");
   const [totalAmount, setTotalAmount] = useState("0.00");
   const [customTipPercent, setCustomTipPercent] = useState("");
+  const [inputError, setInputError] = useState(false);
 
   const handleBillInputChange = (e) => {
     setBillAmount(e.target.value);
@@ -37,11 +38,19 @@ const Home = () => {
       if (!isFinite(totalAmount)) return;
       setTotalAmount(totalAmount.toFixed(2));
     };
+
     calculateTipAmount();
     calculateTotalAmount();
   }, [billAmount, numOfPeople, tipAmount, tipPercent]);
 
   const handleTipButtonClick = (percent) => {
+    if (!billAmount.trim() || !numOfPeople.trim()) {
+      // Set inputError to true to indicate an error
+      setInputError(true);
+      return;
+    }
+    setInputError(false);
+
     setTipPercent(percent);
     console.log(percent);
   };
@@ -74,7 +83,7 @@ const Home = () => {
                 <label>Bill</label>
                 <img className="icon-dollar" src={dolarIcon} alt="dolar icon" />
                 <input
-                  className="input bill-input"
+                  className={`input bill-input ${inputError ? "error" : ""}`}
                   placeholder="0"
                   value={billAmount}
                   onChange={handleBillInputChange}
@@ -110,7 +119,7 @@ const Home = () => {
                   alt="person icon"
                 />
                 <input
-                  className="input people-input"
+                  className={`input people-input ${inputError ? "error" : ""}`}
                   placeholder="0"
                   onChange={handlePeopleInputChange}
                   value={numOfPeople}
