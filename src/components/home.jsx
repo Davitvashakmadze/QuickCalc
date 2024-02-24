@@ -14,6 +14,7 @@ const Home = () => {
   const [inputError, setInputError] = useState(false);
 
   const handleBillInputChange = (e) => {
+    
     setBillAmount(e.target.value);
     console.log(e.target.value);
   };
@@ -62,6 +63,7 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
+    setInputError(false)
     setBillAmount("");
     setTipPercent("");
     setNumOfPeople("");
