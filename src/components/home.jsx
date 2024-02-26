@@ -49,7 +49,7 @@ const Home = () => {
   }, [billAmount, numOfPeople, tipAmount, tipPercent]);
 
   const handleTipButtonClick = (percent) => {
-    if (!billAmount.trim()) {
+    if (!billAmount.trim() || !numOfPeople.trim()) {
       // Set inputError to true to indicate an error
       setInputError(true);
       return;
