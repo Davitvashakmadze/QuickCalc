@@ -50,7 +50,6 @@ const Home = () => {
 
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim() || !numOfPeople.trim()) {
-      // Set inputError to true to indicate an error
       setInputError(true);
       return;
     } else {
