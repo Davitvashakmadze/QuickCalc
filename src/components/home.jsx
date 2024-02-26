@@ -14,7 +14,11 @@ const Home = () => {
   const [inputError, setInputError] = useState(false);
 
   const handleBillInputChange = (e) => {
-    
+    if (!billAmount) {
+      // Set inputError to true to indicate an error
+      setInputError(false);
+    }
+
     setBillAmount(e.target.value);
     console.log(e.target.value);
   };
@@ -45,12 +49,13 @@ const Home = () => {
   }, [billAmount, numOfPeople, tipAmount, tipPercent]);
 
   const handleTipButtonClick = (percent) => {
-    if (!billAmount.trim() || !numOfPeople.trim()) {
+    if (!billAmount.trim()) {
       // Set inputError to true to indicate an error
       setInputError(true);
       return;
+    } else {
+      setInputError(false);
     }
-    setInputError(false);
 
     setTipPercent(percent);
     console.log(percent);
@@ -63,7 +68,7 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
-    setInputError(false)
+    setInputError(false);
     setBillAmount("");
     setTipPercent("");
     setNumOfPeople("");
