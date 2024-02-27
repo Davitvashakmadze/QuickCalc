@@ -15,7 +15,6 @@ const Home = () => {
 
   const handleBillInputChange = (e) => {
     if (!billAmount) {
-      // Set inputError to true to indicate an error
       setInputError(false);
     }
 
