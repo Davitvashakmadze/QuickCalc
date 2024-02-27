@@ -55,6 +55,7 @@ const Home = () => {
       setInputError(false);
     }
 
+    
     setTipPercent(percent);
     console.log(percent);
   };
