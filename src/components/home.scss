@@ -13,9 +13,13 @@ body {
   font-size: 16px;
   background: #c5e4e7;
 
-  .error {
-    border: 1px solid red;
-  }
+  
+    .error{
+      content: "can't be zero";
+      border: solid 3px red;
+    }
+ 
+  
   
 }
 input {
@@ -211,15 +215,4 @@ label {
 .percents input::placeholder {
   color: #7f9d9f;
 }
-.user-input {
-  position: relative;
 
-  &.err-bill::before,
-  &.err-people::before {
-    content: "can't be zero";
-    position: absolute;
-    right: 0;
-    top: 20%;
-    color: red;
-  }
-}
