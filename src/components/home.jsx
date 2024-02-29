@@ -55,7 +55,6 @@ const Home = () => {
       setInputError(false);
     }
 
-    
     setTipPercent(percent);
     console.log(percent);
   };
@@ -88,6 +87,7 @@ const Home = () => {
               <div className="input-bill user-input-bill">
                 <label>Bill</label>
                 <img className="icon-dollar" src={dolarIcon} alt="dolar icon" />
+                {inputError && <p className="error-message">can't be zero</p>}
                 <input
                   className={`input bill-input ${inputError ? "error" : ""}`}
                   placeholder="0"
@@ -124,6 +124,7 @@ const Home = () => {
                   src={personIcon}
                   alt="person icon"
                 />
+                {inputError && <p className="error-message">can't be zero</p>}
                 <input
                   className={`input people-input ${inputError ? "error" : ""}`}
                   placeholder="0"
