@@ -11,11 +11,11 @@ const Home = () => {
   const [tipAmount, setTipAmount] = useState("0.00");
   const [totalAmount, setTotalAmount] = useState("0.00");
   const [customTipPercent, setCustomTipPercent] = useState("");
-  const [inputError, setInputError] = useState(false);
+  const [billInputError, setBillInputError] = useState(false);
 
   const handleBillInputChange = (e) => {
     if (!billAmount) {
-      setInputError(false);
+      setBillInputError(false);
     }
 
     setBillAmount(e.target.value);
@@ -49,10 +49,12 @@ const Home = () => {
 
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim() || !numOfPeople.trim()) {
-      setInputError(true);
+      setBillInputError(true);
+      setTotalAmount("test")
       return;
     } else {
-      setInputError(false);
+      setBillInputError(false);
+      setTotalAmount("test")
     }
 
     setTipPercent(percent);
@@ -66,7 +68,7 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
-    setInputError(false);
+    setBillInputError(false);
     setBillAmount("");
     setTipPercent("");
     setNumOfPeople("");
@@ -87,9 +89,9 @@ const Home = () => {
               <div className="input-bill user-input-bill">
                 <label>Bill</label>
                 <img className="icon-dollar" src={dolarIcon} alt="dolar icon" />
-                {inputError && <p className="error-message">can't be zero</p>}
+                {billInputError && <p className="error-message">can't be zero</p>}
                 <input
-                  className={`input bill-input ${inputError ? "error" : ""}`}
+                  className={`input bill-input ${billInputError ? "error" : ""}`}
                   placeholder="0"
                   value={billAmount}
                   onChange={handleBillInputChange}
@@ -124,9 +126,9 @@ const Home = () => {
                   src={personIcon}
                   alt="person icon"
                 />
-                {inputError && <p className="error-message">can't be zero</p>}
+                {/* {inputError && <p className="error-message">can't be zero</p>} */}
                 <input
-                  className={`input people-input ${inputError ? "error" : ""}`}
+                  className={`input people-input`}
                   placeholder="0"
                   onChange={handlePeopleInputChange}
                   value={numOfPeople}
