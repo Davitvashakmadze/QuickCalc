@@ -28,7 +28,6 @@ const Home = () => {
       setNumOfPeopleinputError(false);
     }
     setNumOfPeople(e.target.value);
-    console.log(e.target.value);
   };
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const Home = () => {
       const bill = Number(billAmount);
       const percent = Number(tipPercent);
       const tipAmount = (bill * percent) / 100;
-      console.log(tipAmount);
       setTipAmount(tipAmount.toFixed(2));
     };
     const calculateTotalAmount = () => {
@@ -49,7 +47,7 @@ const Home = () => {
 
     calculateTipAmount();
     calculateTotalAmount();
-  }, [billAmount, numOfPeople, tipAmount, tipPercent]);
+  }, [billAmount, numOfPeople, tipAmount, tipPercent, customTipPercent]);
 
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim()) {
@@ -63,13 +61,18 @@ const Home = () => {
     }
 
     setTipPercent(percent);
-    console.log(percent);
   };
 
   const handleCustomInputChange = (e) => {
-    const customPercent = Number(e.target.value);
+    const customPercent = e.target.value;
     setCustomTipPercent(customPercent);
-    console.log(customPercent);
+
+
+    // Check if the entered value is a valid number
+    if (!isNaN(customPercent)) {
+      // Update tipPercent directly if the entered value is a number
+      setTipPercent(Number(customPercent));
+    }
   };
 
   const handleResetClick = () => {
