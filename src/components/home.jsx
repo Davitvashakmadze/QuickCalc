@@ -48,13 +48,12 @@ const Home = () => {
   }, [billAmount, numOfPeople, tipAmount, tipPercent]);
 
   const handleTipButtonClick = (percent) => {
-    if (!billAmount.trim() || !numOfPeople.trim()) {
+    if (!billAmount.trim()) {
       setBillInputError(true);
-      setTotalAmount("test")
+      setTotalAmount("test");
       return;
     } else {
       setBillInputError(false);
-      setTotalAmount("test")
     }
 
     setTipPercent(percent);
@@ -89,9 +88,13 @@ const Home = () => {
               <div className="input-bill user-input-bill">
                 <label>Bill</label>
                 <img className="icon-dollar" src={dolarIcon} alt="dolar icon" />
-                {billInputError && <p className="error-message">can't be zero</p>}
+                {billInputError && (
+                  <p className="error-message">can't be zero</p>
+                )}
                 <input
-                  className={`input bill-input ${billInputError ? "error" : ""}`}
+                  className={`input bill-input ${
+                    billInputError ? "error" : ""
+                  }`}
                   placeholder="0"
                   value={billAmount}
                   onChange={handleBillInputChange}
