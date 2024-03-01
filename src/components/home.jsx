@@ -54,13 +54,12 @@ const Home = () => {
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim()) {
       setBillInputError(true);
-      return;
     }  if (!numOfPeople.trim()) {
       setNumOfPeopleinputError(true);
-      return;
     } else {
       setBillInputError(false);
       setNumOfPeopleinputError(false)
+
     }
 
     setTipPercent(percent);
