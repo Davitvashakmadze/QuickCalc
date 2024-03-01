@@ -12,6 +12,7 @@ const Home = () => {
   const [totalAmount, setTotalAmount] = useState("0.00");
   const [customTipPercent, setCustomTipPercent] = useState("");
   const [billInputError, setBillInputError] = useState(false);
+  const [numOfPeopleinputError, setNumOfPeopleinputError] = useState(false);
 
   const handleBillInputChange = (e) => {
     if (!billAmount) {
@@ -23,6 +24,9 @@ const Home = () => {
   };
 
   const handlePeopleInputChange = (e) => {
+    if (!numOfPeople) {
+      setNumOfPeopleinputError(false);
+    }
     setNumOfPeople(e.target.value);
     console.log(e.target.value);
   };
@@ -50,10 +54,13 @@ const Home = () => {
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim()) {
       setBillInputError(true);
-      setTotalAmount("test");
+      return;
+    }  if (!numOfPeople.trim()) {
+      setNumOfPeopleinputError(true);
       return;
     } else {
       setBillInputError(false);
+      setNumOfPeopleinputError(false)
     }
 
     setTipPercent(percent);
@@ -67,6 +74,7 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
+    setNumOfPeopleinputError(false)
     setBillInputError(false);
     setBillAmount("");
     setTipPercent("");
@@ -129,9 +137,13 @@ const Home = () => {
                   src={personIcon}
                   alt="person icon"
                 />
-                {/* {inputError && <p className="error-message">can't be zero</p>} */}
+                {numOfPeopleinputError && (
+                  <p className="error-message">can't be zero</p>
+                )}
                 <input
-                  className={`input people-input`}
+                  className={`input people-input ${
+                    numOfPeopleinputError ? "error" : ""
+                  }`}
                   placeholder="0"
                   onChange={handlePeopleInputChange}
                   value={numOfPeople}
