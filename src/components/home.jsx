@@ -61,6 +61,7 @@ const Home = () => {
     }
 
     setTipPercent(percent);
+
   };
 
   const handleCustomInputChange = (e) => {
