@@ -52,22 +52,20 @@ const Home = () => {
   const handleTipButtonClick = (percent) => {
     if (!billAmount.trim()) {
       setBillInputError(true);
-    }  if (!numOfPeople.trim()) {
+    }
+    if (!numOfPeople.trim()) {
       setNumOfPeopleinputError(true);
     } else {
       setBillInputError(false);
-      setNumOfPeopleinputError(false)
-
+      setNumOfPeopleinputError(false);
     }
 
     setTipPercent(percent);
-
   };
 
   const handleCustomInputChange = (e) => {
     const customPercent = e.target.value;
     setCustomTipPercent(customPercent);
-
 
     // Check if the entered value is a valid number
     if (!isNaN(customPercent)) {
@@ -77,7 +75,7 @@ const Home = () => {
   };
 
   const handleResetClick = () => {
-    setNumOfPeopleinputError(false)
+    setNumOfPeopleinputError(false);
     setBillInputError(false);
     setBillAmount("");
     setTipPercent("");
