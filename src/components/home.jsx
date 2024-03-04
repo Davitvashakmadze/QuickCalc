@@ -30,6 +30,7 @@ const Home = () => {
     setNumOfPeople(e.target.value);
   };
 
+  
   useEffect(() => {
     const calculateTipAmount = () => {
       const bill = Number(billAmount);
