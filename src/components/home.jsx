@@ -30,7 +30,6 @@ const Home = () => {
     setNumOfPeople(e.target.value);
   };
 
-  
   useEffect(() => {
     const calculateTipAmount = () => {
       const bill = Number(billAmount);
@@ -70,7 +69,6 @@ const Home = () => {
 
     // Check if the entered value is a valid number
     if (!isNaN(customPercent)) {
-      // Update tipPercent directly if the entered value is a number
       setTipPercent(Number(customPercent));
     }
   };
