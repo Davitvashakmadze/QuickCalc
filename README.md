@@ -1,4 +1,4 @@
-LIVE LINK -->> https://tipcalculator-dt.netlify.app/
+# LIVE LINK -->> https://tipcalculator-dt.netlify.app/
 
 # Getting Started with Create React App
 
